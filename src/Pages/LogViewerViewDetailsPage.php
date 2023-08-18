@@ -19,7 +19,7 @@ class LogViewerViewDetailsPage extends Page
 
     public function getTitle(): string
     {
-        return __('filament-logviewer::pages.log_details');
+        return __('filament-log-viewer::pages.log_details');
     }
 
     public static function getRoutes(): Closure

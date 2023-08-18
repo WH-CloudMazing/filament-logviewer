@@ -20,7 +20,7 @@ class FilamentLogviewerServiceProvider extends PluginServiceProvider
 /*
     protected $policies = [
         //LogFile::class => LogFilePolicy::class,
-        //LogFile::class => config('filament-logviewer::filament-logviewer.user_class', 'Rabol\\FilamentLogviewer\\Policies\\LogFilePolicy'),
+        //LogFile::class => config('filament-log-viewer::filament-logviewer.user_class', 'Rabol\\FilamentLogviewer\\Policies\\LogFilePolicy'),
     ];
 */
 
@@ -64,8 +64,8 @@ class FilamentLogviewerServiceProvider extends PluginServiceProvider
      */
     public function registerPolicies(): void
     {
-        $model_class = config('filament-logviewer::filament-logviewer.user_class', '\Rabol\\FilamentLogviewer\\Models\\LogFile::class');
-        $policy_class = config('filament-logviewer::filament-logviewer.user_class', 'Rabol\\FilamentLogviewer\\Policies\\LogFilePolicy');
+        $model_class = config('filament-log-viewer::filament-logviewer.user_class', '\Rabol\\FilamentLogviewer\\Models\\LogFile::class');
+        $policy_class = config('filament-log-viewer::filament-logviewer.user_class', 'Rabol\\FilamentLogviewer\\Policies\\LogFilePolicy');
 
         Gate::policy($model_class, $policy_class);
     }
