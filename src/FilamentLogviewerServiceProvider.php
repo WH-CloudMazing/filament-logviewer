@@ -10,6 +10,7 @@ use Rabol\FilamentLogviewer\Pages\LogViewerPage;
 use Rabol\FilamentLogviewer\Policies\LogFilePolicy;
 use Rabol\FilamentLogviewer\Pages\LogViewerViewLogPage;
 use Rabol\FilamentLogviewer\Pages\LogViewerViewDetailsPage;
+use Spatie\LaravelPackageTools\Package;
 
 class FilamentLogviewerServiceProvider extends PluginServiceProvider
 {
@@ -22,6 +23,14 @@ class FilamentLogviewerServiceProvider extends PluginServiceProvider
         //LogFile::class => config('filament-logviewer::filament-logviewer.user_class', 'Rabol\\FilamentLogviewer\\Policies\\LogFilePolicy'),
     ];
 */
+
+    public function configurePackage(Package $package): void
+    {
+        parent::configurePackage($package);
+
+        $package->hasTranslations();
+    }
+
     /**
      * getPages
      *

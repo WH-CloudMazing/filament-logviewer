@@ -20,9 +20,12 @@ class LogViewerPage extends Page implements Tables\Contracts\HasTable
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'filament-log-viewer::log-viewer';
-    protected static ?string $title = 'Log viewer';
-    protected static ?string $navigationLabel = 'Log viewer';
     protected static ?string $model = LogFile::class;
+
+    public function getTitle(): string
+    {
+        return __('filament-logviewer::pages.log_viewer');
+    }
 
     protected static function getNavigationGroup(): ?string
     {
@@ -43,6 +46,7 @@ class LogViewerPage extends Page implements Tables\Contracts\HasTable
     {
         return [
             Tables\Columns\TextColumn::make('name')
+                ->label(__('filament-logviewer::fields.name'))
                 ->searchable()
                 ->sortable()
         ];
@@ -51,12 +55,12 @@ class LogViewerPage extends Page implements Tables\Contracts\HasTable
     protected function getTableActions(): array
     {
         return [
-            Tables\Actions\LinkAction::make('viewlogfile')
+            Tables\Actions\Action::make('viewlogfile')
                 ->label('View')
                 ->url(function (LogFile $record) {
                     return LogViewerViewLogPage::getUrl(['fileName' => $record->name]);
                 }),
-            Tables\Actions\LinkAction::make('delete')
+            Tables\Actions\Action::make('delete')
                     ->action('deleteLogFile')
                     ->requiresConfirmation()
                     ->hidden(fn ($record) => ! static::canDelete($record)),

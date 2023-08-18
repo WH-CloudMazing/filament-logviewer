@@ -3,7 +3,7 @@
 namespace Rabol\FilamentLogviewer\Pages;
 
 use Closure;
-use Filament\Pages\Actions\ButtonAction;
+use Filament\Pages\Actions\Action;
 use Filament\Pages\Page;
 use Illuminate\Support\Facades\Route;
 use Jackiedo\LogReader\Facades\LogReader;
@@ -13,7 +13,6 @@ class LogViewerViewLogPage extends Page
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
     protected static string $view = 'filament-log-viewer::log-viewer-view';
     protected static bool $shouldRegisterNavigation = false;
-    protected static ?string $title = 'View log file';
     private $logEntries;
     private $log;
     private $fileName;
@@ -30,14 +29,14 @@ class LogViewerViewLogPage extends Page
     {
         $this->log = LogReader::filename($fileName);
         $this->logEntries = $this->log->get(); // we need to paginate...
-        self::$title = 'Log file: ' . $fileName;
+        self::$title = __('filament-logviewer::pages.view_log_file', ['name' => $fileName]);
         $this->fileName = $fileName;
     }
 
     protected function getActions(): array
     {
         return [
-            ButtonAction::make('back')
+            Action::make('back')
                 ->label('Back')
                 ->url(LogViewerPage::getUrl()),
         ];
