@@ -29,7 +29,7 @@ class LogViewerViewLogPage extends Page
     {
         $this->log = LogReader::filename($fileName);
         $this->logEntries = $this->log->get(); // we need to paginate...
-        self::$title = __('filament-log-viewer::pages.view_log_file', ['name' => $fileName]);
+        self::$title = __('filament-log-viewer::filament-logviewer.pages.view_log_file', ['name' => $fileName]);
         $this->fileName = $fileName;
     }
 

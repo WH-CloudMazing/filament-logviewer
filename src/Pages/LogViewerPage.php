@@ -24,12 +24,12 @@ class LogViewerPage extends Page implements Tables\Contracts\HasTable
 
     public function getTitle(): string
     {
-        return __('filament-log-viewer::pages.log_viewer');
+        return __('filament-log-viewer::filament-logviewer.pages.log_viewer');
     }
 
     protected static function getNavigationLabel(): string
     {
-        return __('filament-log-viewer::pages.log_viewer');
+        return __('filament-log-viewer::filament-logviewer.pages.log_viewer');
     }
 
     protected static function getNavigationGroup(): ?string
@@ -51,7 +51,7 @@ class LogViewerPage extends Page implements Tables\Contracts\HasTable
     {
         return [
             Tables\Columns\TextColumn::make('name')
-                ->label(__('filament-log-viewer::fields.name'))
+                ->label(__('filament-log-viewer::filament-logviewer.fields.name'))
                 ->searchable()
                 ->sortable()
         ];
