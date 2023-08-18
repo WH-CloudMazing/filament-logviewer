@@ -26,11 +26,15 @@ class LogViewerViewLogPage extends Page
         };
     }
 
+    protected function getTitle(): string
+    {
+        return __('filament-log-viewer::filament-logviewer.pages.log_file', ['name' => $this->fileName]);
+    }
+
     public function mount(string $fileName): void
     {
         $this->log = LogReader::filename($fileName);
         $this->logEntries = $this->log->get(); // we need to paginate...
-        self::$title = __('filament-log-viewer::filament-logviewer.pages.view_log_file', ['name' => $fileName]);
         $this->fileName = $fileName;
     }
 

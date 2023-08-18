@@ -25,6 +25,7 @@ return [
         'level' => 'Level',
         'context' => 'Context',
         'actions' => 'Actions',
+        'stack_trace' => 'Stack Trace',
     ],
 
     /*
