@@ -21,6 +21,7 @@ class LogViewerPage extends Page implements Tables\Contracts\HasTable
 
     protected static string $view = 'filament-log-viewer::log-viewer';
     protected static ?string $model = LogFile::class;
+    protected static ?string $slug = 'log-viewer-page';
 
     public function getTitle(): string
     {

@@ -20,6 +20,20 @@ return [
     */
     'fields' => [
         'name' => 'Name',
+        'date' => 'Date',
+        'environment' => 'Environment',
+        'level' => 'Level',
+        'context' => 'Context',
+        'actions' => 'Actions',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fields
+    |--------------------------------------------------------------------------
+    */
+    'actions' => [
+        'view_details' => 'View details',
     ],
 
 ];

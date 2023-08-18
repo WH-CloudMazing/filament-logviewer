@@ -13,6 +13,7 @@ class LogViewerViewDetailsPage extends Page
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
     protected static string $view = 'filament-log-viewer::log-viewer-view-details';
     protected static bool $shouldRegisterNavigation = false;
+    protected static ?string $slug = 'log-viewer-view-details-page';
     private $recordId;
     private $fileName;
     private $entry;
@@ -26,7 +27,9 @@ class LogViewerViewDetailsPage extends Page
     {
         return function () {
             $slug = static::getSlug();
-            Route::get("{$slug}/{recordId?}/{fileName?}", static::class)->name($slug);
+            Route::get("{$slug}/{recordId?}/{fileName?}", static::class)
+                ->middleware(static::getMiddlewares())
+                ->name($slug);
         };
     }
 

@@ -13,6 +13,7 @@ class LogViewerViewLogPage extends Page
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
     protected static string $view = 'filament-log-viewer::log-viewer-view';
     protected static bool $shouldRegisterNavigation = false;
+    protected static ?string $slug = 'log-viewer-view-log-page';
     private $logEntries;
     private $log;
     private $fileName;
