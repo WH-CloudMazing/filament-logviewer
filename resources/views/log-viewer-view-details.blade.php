@@ -9,7 +9,7 @@
             <dl>
                 <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">
-                        @lang('filament-log-viewer::filament-logviewer.fields.date')
+                        @lang('filament-logviewer::filament-logviewer.fields.date')
                     </dt>
                     <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                         {{$entry->date}}
@@ -17,7 +17,7 @@
                 </div>
                 <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">
-                        @lang('filament-log-viewer::filament-logviewer.fields.environment')
+                        @lang('filament-logviewer::filament-logviewer.fields.environment')
                     </dt>
                     <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                         {{$entry->environment}}
@@ -25,7 +25,7 @@
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">
-                        @lang('filament-log-viewer::filament-logviewer.fields.level')
+                        @lang('filament-logviewer::filament-logviewer.fields.level')
                     </dt>
                     <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                         @if($entry->level == 'error')
@@ -48,7 +48,7 @@
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">
-                        @lang('filament-log-viewer::filament-logviewer.fields.context')
+                        @lang('filament-logviewer::filament-logviewer.fields.context')
                     </dt>
                 </div>
                 <div class="bg-gray-50 px-4 pb-5">
@@ -59,7 +59,7 @@
                 </div>
                 <div class="bg-gray-50 px-4 pt-5">
                     <dt class="text-sm font-medium text-gray-500">
-                        @lang('filament-log-viewer::filament-logviewer.fields.stack_trace')
+                        @lang('filament-logviewer::filament-logviewer.fields.stack_trace')
                     </dt>
                 </div>
                 <div class="bg-gray-50 px-4 py-5 w-full">

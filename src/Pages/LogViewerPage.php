@@ -24,12 +24,12 @@ class LogViewerPage extends Page implements Tables\Contracts\HasTable
 
     public function getTitle(): string
     {
-        return __('filament-log-viewer::filament-logviewer.pages.log_viewer');
+        return __('filament-logviewer::filament-logviewer.pages.log_viewer');
     }
 
     protected static function getNavigationLabel(): string
     {
-        return __('filament-log-viewer::filament-logviewer.pages.log_viewer');
+        return __('filament-logviewer::filament-logviewer.pages.log_viewer');
     }
 
     public static function getNavigationGroup(): ?string

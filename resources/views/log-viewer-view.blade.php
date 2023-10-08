@@ -11,11 +11,11 @@
         <table class="w-full text-left rtl:text-right divide-y table-auto">
             <thead>
             <tr class="bg-gray-50">
-                <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">@lang('filament-log-viewer::filament-logviewer.fields.date')</td>
-                <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">@lang('filament-log-viewer::filament-logviewer.fields.environment')</td>
-                <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">@lang('filament-log-viewer::filament-logviewer.fields.level')</td>
-                <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">@lang('filament-log-viewer::filament-logviewer.fields.context')</td>
-                <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">@lang('filament-log-viewer::filament-logviewer.fields.actions')</td>
+                <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">@lang('filament-logviewer::filament-logviewer.fields.date')</td>
+                <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">@lang('filament-logviewer::filament-logviewer.fields.environment')</td>
+                <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">@lang('filament-logviewer::filament-logviewer.fields.level')</td>
+                <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">@lang('filament-logviewer::filament-logviewer.fields.context')</td>
+                <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">@lang('filament-logviewer::filament-logviewer.fields.actions')</td>
             </tr>
             </thead>
 
@@ -53,7 +53,7 @@
                         <td class="px-2 py-3 whitespace-nowrap">
                             <a href="{{ Rabol\FilamentLogviewer\Pages\LogViewerViewDetailsPage::getUrl(['recordId' => $logEntry->id,'fileName'=> $filename])}}"
                                class="hover:underline focus:outline-none focus:underline text-primary-600 hover:text-primary-500 text-sm font-medium">
-                                @lang('filament-log-viewer::filament-logviewer.actions.view_details')
+                                @lang('filament-logviewer::filament-logviewer.actions.view_details')
                             </a>
                         </td>
                     </tr>
