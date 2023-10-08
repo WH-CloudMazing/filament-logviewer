@@ -35,7 +35,7 @@ class LogViewerViewLogPage extends Page
         };
     }
 
-    protected function getTitle(): string
+    public function getTitle(): string
     {
         return __('filament-logviewer::filament-logviewer.pages.log_file', ['name' => $this->fileName]);
     }

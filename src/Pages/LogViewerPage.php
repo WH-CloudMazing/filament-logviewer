@@ -27,7 +27,7 @@ class LogViewerPage extends Page implements Tables\Contracts\HasTable
         return __('filament-logviewer::filament-logviewer.pages.log_viewer');
     }
 
-    protected static function getNavigationLabel(): string
+    public static function getNavigationLabel(): string
     {
         return __('filament-logviewer::filament-logviewer.pages.log_viewer');
     }
