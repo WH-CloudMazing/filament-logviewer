@@ -2,83 +2,130 @@
 
 namespace Rabol\FilamentLogviewer;
 
-use Filament\PluginServiceProvider;
-use Illuminate\Support\Facades\Log;
+use Filament\Support\Assets\Asset;
+use Filament\Support\Assets\Css;
+use Filament\Support\Facades\FilamentAsset;
+use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Support\Facades\Gate;
-use Rabol\FilamentLogviewer\Models\LogFile;
-use Rabol\FilamentLogviewer\Pages\LogViewerPage;
-use Rabol\FilamentLogviewer\Policies\LogFilePolicy;
-use Rabol\FilamentLogviewer\Pages\LogViewerViewLogPage;
-use Rabol\FilamentLogviewer\Pages\LogViewerViewDetailsPage;
+use Livewire\Features\SupportTesting\Testable;
+use Rabol\FilamentLogviewer\Commands\FilamentLogviewerCommand;
+use Rabol\FilamentLogviewer\Testing\TestsFilamentLogviewer;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class FilamentLogviewerServiceProvider extends PluginServiceProvider
+class FilamentLogviewerServiceProvider extends PackageServiceProvider
 {
-    public static string $name = 'filament-log-viewer';
+    public static string $name = 'filament-logviewer';
 
-
-/*
-    protected $policies = [
-        //LogFile::class => LogFilePolicy::class,
-        //LogFile::class => config('filament-log-viewer::filament-logviewer.user_class', 'Rabol\\FilamentLogviewer\\Policies\\LogFilePolicy'),
-    ];
-*/
+    public static string $viewNamespace = 'filament-logviewer';
 
     public function configurePackage(Package $package): void
     {
-        parent::configurePackage($package);
+        /*
+             * This class is a Package Service Provider
+             *
+             * More info: https://github.com/spatie/laravel-package-tools
+             */
+        $package->name(static::$name)
+            ->hasCommands($this->getCommands())
+            ->hasInstallCommand(function (InstallCommand $command) {
+                $command
+                    ->publishConfigFile()
+                    ->publishMigrations()
+                    ->askToRunMigrations()
+                    ->askToStarRepoOnGitHub('rabol/filament-logviewer');
+            });
 
-        $package->hasTranslations();
+        if (file_exists($package->basePath('/config/filament-log-viewer.php'))) {
+            $package->hasConfigFile();
+        }
+
+        if (file_exists($package->basePath('/../resources/lang'))) {
+            $package->hasTranslations();
+        }
+
+        if (file_exists($package->basePath('/../resources/views'))) {
+            $package->hasViews(static::$viewNamespace);
+        }
     }
 
-    /**
-     * getPages
-     *
-     * @return array
-     */
-    protected function getPages(): array
+    public function packageBooted(): void
     {
-        return [
-            LogViewerPage::class,
-            LogViewerViewLogPage::class,
-            LogViewerViewDetailsPage::class,
-        ];
-    }
+        // Asset Registration
+        FilamentAsset::register(
+            $this->getAssets(),
+            $this->getAssetPackageName()
+        );
 
-    /**
-     * getStyles
-     *
-     * @return array
-     */
-    protected function getStyles(): array
-    {
-        return [
-            'filament-log-viewer-styles' => __DIR__ . '/../resources/css/dist/filament-logviewer.css',
-        ];
-    }
+        FilamentAsset::registerScriptData(
+            $this->getScriptData(),
+            $this->getAssetPackageName()
+        );
 
-    /**
-     * registerPolicies
-     *
-     * @return void
-     */
-    public function registerPolicies(): void
-    {
-        $model_class = config('filament-log-viewer::filament-logviewer.user_class', '\Rabol\\FilamentLogviewer\\Models\\LogFile::class');
-        $policy_class = config('filament-log-viewer::filament-logviewer.user_class', 'Rabol\\FilamentLogviewer\\Policies\\LogFilePolicy');
+        // Icon Registration
+        FilamentIcon::register($this->getIcons());
+
+        $model_class = config('filament-logviewer::filament-logviewer.user_class', '\Rabol\\FilamentLogviewer\\Models\\LogFile::class');
+        $policy_class = config('filament-logviewer::filament-logviewer.user_class', 'Rabol\\FilamentLogviewer\\Policies\\LogFilePolicy');
 
         Gate::policy($model_class, $policy_class);
+
+        // Testing
+        Testable::mixin(new TestsFilamentLogviewer());
+    }
+
+    protected function getAssetPackageName(): ?string
+    {
+        return 'rabol/filament-logviewer';
     }
 
     /**
-     * boot
-     *
-     * @return void
+     * @return array<Asset>
      */
-    public function boot(): void
+    protected function getAssets(): array
     {
-        parent::boot();
+        return [
+            Css::make('filament-logviewer-styles', __DIR__.'/../resources/css/dist/filament-logviewer.css'),
+        ];
+    }
 
-        $this->registerPolicies();
+    protected function getCommands(): array
+    {
+        return [
+            FilamentLogviewerCommand::class,
+        ];
+    }
+
+    /**
+     * @return array<string>
+     */
+    protected function getIcons(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return array<string>
+     */
+    protected function getRoutes(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    protected function getScriptData(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return array<string>
+     */
+    protected function getMigrations(): array
+    {
+        return [];
     }
 }

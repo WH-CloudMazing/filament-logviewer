@@ -20,13 +20,13 @@ composer require rabol/filament-logviewer
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="filament-log-viewer-config"
+php artisan vendor:publish --tag="filament-logviewer-config"
 ```
 
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="filament-log-viewer-views"
+php artisan vendor:publish --tag="filament-logviewer-views"
 ```
 
 This is the contents of the published config file:
@@ -38,6 +38,25 @@ return [
     'navigation_group' => 'System',
 ];
 
+```
+## Usage
+
+Add the `Rabol\FilamentLogviewer\FilamentLogviewerPlugin` to your panel config.
+
+```php
+use Rabol\FilamentLogviewer\FilamentLogviewerPlugin;
+
+class AdminPanelProvider extends PanelProvider
+{
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            // ...
+            ->plugin(
+                FilamentLogviewerPlugin::make()
+            );
+    }
+}
 ```
 
 
