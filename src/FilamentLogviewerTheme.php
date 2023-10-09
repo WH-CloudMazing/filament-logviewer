@@ -23,12 +23,6 @@ class FilamentLogviewerTheme implements Plugin
 
         $panel
             ->font('DM Sans')
-            ->primaryColor(Color::Amber)
-            ->secondaryColor(Color::Gray)
-            ->warningColor(Color::Amber)
-            ->dangerColor(Color::Rose)
-            ->successColor(Color::Green)
-            ->grayColor(Color::Gray)
             ->theme('filament-logviewer');
     }
 

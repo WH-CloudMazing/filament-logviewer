@@ -8,13 +8,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        danger: colors.rose,
-        gray: colors.stone,
-        primary: colors.yellow,
-        success: colors.green,
-        warning: colors.amber,
-      },
+      colors: {},
     },
   },
   plugins: [],
